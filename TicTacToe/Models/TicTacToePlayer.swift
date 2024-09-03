@@ -1,5 +1,5 @@
 //
-//  TicTacToe.swift
+//  TicTacToePlayer.swift
 //  TicTacToe
 //
 //  Created by Hampus Andersson on 2024-09-03.
@@ -7,9 +7,11 @@
 
 import Foundation
 
-class TicTacToe {
+struct Player {
     
-    
+    var username: String
+    var score: Int
+    var id: Int
     
     
 }
