@@ -9,7 +9,7 @@ import UIKit
 
 class GameViewController: UIViewController {
     
-    var game = "Game"
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
