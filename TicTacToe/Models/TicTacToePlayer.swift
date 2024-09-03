@@ -11,7 +11,6 @@ struct Player {
     
     var username: String
     var score: Int
-    var id: Int
     
     
 }

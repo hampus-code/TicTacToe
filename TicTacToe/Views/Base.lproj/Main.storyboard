@@ -8,10 +8,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Game View Controller-->
         <scene sceneID="6LD-mn-ubK">
             <objects>
-                <viewController id="aGq-24-ej5" customClass="ViewController" customModule="TicTacToe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="aGq-24-ej5" customClass="GameViewController" customModule="TicTacToe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="arL-bT-lCA">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -75,7 +75,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cGa-lz-lKO">
                                                 <rect key="frame" x="0.0" y="0.0" width="225" height="75"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="G3u-gY-T6Y">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="G3u-gY-T6Y" userLabel="squareOne">
                                                         <rect key="frame" x="0.0" y="1.6666666666666643" width="75" height="72"/>
                                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
@@ -83,7 +83,7 @@
                                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="75" id="k2q-0L-XUo"/>
                                                         </constraints>
                                                     </imageView>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Mre-eY-Bff">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Mre-eY-Bff" userLabel="squareTwo">
                                                         <rect key="frame" x="75" y="1.6666666666666643" width="75" height="72"/>
                                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
@@ -91,7 +91,7 @@
                                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="75" id="xdb-Cx-L7j"/>
                                                         </constraints>
                                                     </imageView>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="QXk-PM-eou">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="QXk-PM-eou" userLabel="squareThree">
                                                         <rect key="frame" x="150" y="1.6666666666666643" width="75" height="72"/>
                                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
@@ -104,7 +104,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MgA-GK-zd3">
                                                 <rect key="frame" x="0.0" y="75" width="225" height="75"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="TrA-Ak-02n">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="TrA-Ak-02n" userLabel="squareFour">
                                                         <rect key="frame" x="0.0" y="1.6666666666666643" width="75" height="72"/>
                                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
@@ -112,7 +112,7 @@
                                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="75" id="lk9-Ub-lCt"/>
                                                         </constraints>
                                                     </imageView>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="vSi-KW-wmY">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="vSi-KW-wmY" userLabel="squareFive">
                                                         <rect key="frame" x="75" y="1.6666666666666643" width="75" height="72"/>
                                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
@@ -120,7 +120,7 @@
                                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="75" id="wCz-gn-XfV"/>
                                                         </constraints>
                                                     </imageView>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="cki-xl-XSm">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="cki-xl-XSm" userLabel="squareSix">
                                                         <rect key="frame" x="150" y="1.6666666666666643" width="75" height="72"/>
                                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
@@ -133,7 +133,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mcl-TW-WtX">
                                                 <rect key="frame" x="0.0" y="150" width="225" height="75"/>
                                                 <subviews>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="slk-X2-Acs">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="slk-X2-Acs" userLabel="squareSeven">
                                                         <rect key="frame" x="0.0" y="1.6666666666666643" width="75" height="72"/>
                                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
@@ -141,7 +141,7 @@
                                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="75" id="h6u-CW-m1g"/>
                                                         </constraints>
                                                     </imageView>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="jmj-9Y-fxC">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="jmj-9Y-fxC" userLabel="squareEight">
                                                         <rect key="frame" x="75" y="1.6666666666666643" width="75" height="72"/>
                                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
@@ -149,7 +149,7 @@
                                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="75" id="prG-Be-1y1"/>
                                                         </constraints>
                                                     </imageView>
-                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="FDK-NW-Yrl">
+                                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="square" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="FDK-NW-Yrl" userLabel="squareNine">
                                                         <rect key="frame" x="150" y="1.6666666666666643" width="75" height="72"/>
                                                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <constraints>
@@ -175,6 +175,21 @@
                             <constraint firstItem="kUj-GS-cbD" firstAttribute="top" secondItem="Y1l-At-sMB" secondAttribute="top" constant="25" id="vTr-Wc-d6f"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="playerOneCross" destination="0eg-nv-JOz" id="sBJ-HM-bPH"/>
+                        <outlet property="playerTwoCircle" destination="CW7-e5-nQq" id="8gQ-Ia-NuH"/>
+                        <outlet property="scorePlayerOne" destination="c8A-6p-gF7" id="rHw-NO-9h4"/>
+                        <outlet property="scorePlayerTwo" destination="td0-lk-JZ3" id="wtO-Xt-qXR"/>
+                        <outlet property="squareEight" destination="jmj-9Y-fxC" id="l9s-hm-baa"/>
+                        <outlet property="squareFive" destination="vSi-KW-wmY" id="2qP-u0-sVf"/>
+                        <outlet property="squareFour" destination="TrA-Ak-02n" id="1am-z8-Q5A"/>
+                        <outlet property="squareNine" destination="FDK-NW-Yrl" id="Sdg-6a-JdT"/>
+                        <outlet property="squareOne" destination="G3u-gY-T6Y" id="zLv-Pm-o2B"/>
+                        <outlet property="squareSeven" destination="slk-X2-Acs" id="Vsk-WO-KTQ"/>
+                        <outlet property="squareSix" destination="cki-xl-XSm" id="deD-Na-Men"/>
+                        <outlet property="squareThree" destination="QXk-PM-eou" id="zWg-F4-6Jv"/>
+                        <outlet property="squareTwo" destination="Mre-eY-Bff" id="nfR-kQ-VKz"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nP8-ac-abF" sceneMemberID="firstResponder"/>
             </objects>
