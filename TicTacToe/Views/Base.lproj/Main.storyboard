@@ -25,13 +25,17 @@
                                         <color key="textColor" systemColor="systemBlueColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="xmark" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="0eg-nv-JOz">
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="xmark" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="0eg-nv-JOz" userLabel="playerOneCross">
                                         <rect key="frame" x="0.0" y="44.666666666666657" width="50" height="45"/>
                                         <color key="tintColor" systemColor="systemBlueColor"/>
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="50" id="AKL-YC-DtE"/>
                                             <constraint firstAttribute="width" constant="50" id="uXa-OF-NLo"/>
                                         </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="K1W-og-CCy" appends="YES" id="gqS-hX-7yI"/>
+                                        </connections>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e8a-mv-twx">
                                         <rect key="frame" x="0.0" y="117" width="50" height="13.333333333333343"/>
@@ -50,13 +54,17 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="CW7-e5-nQq">
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="CW7-e5-nQq" userLabel="playerTwoCircle">
                                         <rect key="frame" x="0.0" y="39.333333333333371" width="50" height="48.666666666666671"/>
                                         <color key="tintColor" systemColor="systemRedColor"/>
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="50" id="7ey-wK-iUo"/>
                                             <constraint firstAttribute="height" constant="50" id="fIn-5L-k8A"/>
                                         </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="k2z-d1-KsG" appends="YES" id="qyE-pF-zZh"/>
+                                        </connections>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player 2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Gm-DL-3MD">
                                         <rect key="frame" x="0.0" y="113.33333333333337" width="50" height="15.666666666666657"/>
@@ -180,15 +188,6 @@
                         <outlet property="playerTwoCircle" destination="CW7-e5-nQq" id="Qvy-sS-LEy"/>
                         <outlet property="scorePlayerOne" destination="e8a-mv-twx" id="8J8-bQ-hgB"/>
                         <outlet property="scorePlayerTwo" destination="7kp-lL-sdf" id="5ql-bj-LFl"/>
-                        <outlet property="squareEight" destination="jmj-9Y-fxC" id="mKf-XW-yxb"/>
-                        <outlet property="squareFive" destination="vSi-KW-wmY" id="8ct-0a-rex"/>
-                        <outlet property="squareFour" destination="TrA-Ak-02n" id="H1U-5i-shD"/>
-                        <outlet property="squareNine" destination="FDK-NW-Yrl" id="zcf-6B-ixQ"/>
-                        <outlet property="squareOne" destination="G3u-gY-T6Y" id="85a-mT-yn7"/>
-                        <outlet property="squareSeven" destination="slk-X2-Acs" id="Qew-My-50F"/>
-                        <outlet property="squareSix" destination="cki-xl-XSm" id="quw-HB-VUH"/>
-                        <outlet property="squareThree" destination="QXk-PM-eou" id="jaZ-oP-zex"/>
-                        <outlet property="squareTwo" destination="Mre-eY-Bff" id="AhX-ZQ-lL2"/>
                         <outletCollection property="boardSquares" destination="G3u-gY-T6Y" collectionClass="NSMutableArray" id="8qV-R7-Kjc"/>
                         <outletCollection property="boardSquares" destination="Mre-eY-Bff" collectionClass="NSMutableArray" id="HKW-hp-tTV"/>
                         <outletCollection property="boardSquares" destination="QXk-PM-eou" collectionClass="NSMutableArray" id="7O8-ER-FfY"/>
@@ -201,6 +200,16 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="nP8-ac-abF" sceneMemberID="firstResponder"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="K1W-og-CCy">
+                    <connections>
+                        <action selector="onDragX:" destination="aGq-24-ej5" id="iZi-OP-RzN"/>
+                    </connections>
+                </panGestureRecognizer>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="k2z-d1-KsG">
+                    <connections>
+                        <action selector="onDragO:" destination="aGq-24-ej5" id="7yH-8K-sy2"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="364" y="-1"/>
         </scene>
