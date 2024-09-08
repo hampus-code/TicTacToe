@@ -19,18 +19,15 @@ class GameViewController: UIViewController {
     @IBOutlet weak var playerTwoCircle: UIImageView!
     
     
-    //To check which player's turn it is
-    let PLAYER_ONE = 1
-    let PLAYER_TWO = 2
+    //Initial the TicTacToe class
+    var game = TicTacToe()
+    
     
     //The inital position for the X and the O
     var initialXPosition: CGPoint = CGPoint.zero
     var initialOPosition: CGPoint = CGPoint.zero
     
-    //To check which square is which in the gameBoard
-    var gameBoard = [0,0,0,0,0,0,0,0,0]
     
-    var currentPlayerPlaying = true
     
 
     override func viewDidLoad() {
@@ -80,14 +77,14 @@ class GameViewController: UIViewController {
                 //print("Frame of playerOneCross: \(crossFrameInSuperview)")
                             
                 // Check if playerOneCross frame is within the frame of squares
-                if squareFrameInSuperview.contains(crossFrameInSuperview) {
+                if squareFrameInSuperview.contains(crossFrameInSuperview) && game.currentPlayerPlaying && squares.image != playerTwoCircle.image {
                     
                     
                     squares.image = playerOneCross.image
                     squares.tintColor = playerOneCross.tintColor
                     
-                    checkGameBoard(at: index)
-                    print(gameBoard)
+                    game.checkGameBoard(at: index)
+                    print(game.gameBoard)
                     
                 }
                 
@@ -124,13 +121,13 @@ class GameViewController: UIViewController {
                 //print("Frame of playerOneCross: \(circleFrameInSuperview)")
                             
                 // Check if playerTwoCircle frame is within the frame of squares
-                if squareFrameInSuperview.contains(circleFrameInSuperview) {
+                if squareFrameInSuperview.contains(circleFrameInSuperview) && !game.currentPlayerPlaying && squares.image != playerOneCross.image {
                     
                     squares.image = playerTwoCircle.image
                     squares.tintColor = playerTwoCircle.tintColor
                     
-                    checkGameBoard(at: index)
-                    print(gameBoard)
+                    game.checkGameBoard(at: index)
+                    print(game.gameBoard)
                     
                     
                 }
@@ -143,20 +140,6 @@ class GameViewController: UIViewController {
         
     }
     
-    func checkGameBoard(at index: Int) {
-        //Try to use tag and try to map through all the tags??
-        if gameBoard[index] == 0 {
-            if currentPlayerPlaying {
-                gameBoard[index] = PLAYER_ONE
-            } else {
-                gameBoard[index] = PLAYER_TWO
-            }
-            
-            currentPlayerPlaying.toggle()
-            
-        }
-        
-    }
     
     
         
