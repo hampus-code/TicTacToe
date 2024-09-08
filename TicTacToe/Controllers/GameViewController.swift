@@ -49,6 +49,15 @@ class GameViewController: UIViewController {
 
     }
     
+    
+    
+    func gameFinishedAlertMessage(title: String, message: String) {
+        
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Click", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
     //Drag function for X
     @IBAction func onDragX(_ sender: UIPanGestureRecognizer) {
         
@@ -83,7 +92,7 @@ class GameViewController: UIViewController {
                     squares.image = playerOneCross.image
                     squares.tintColor = playerOneCross.tintColor
                     
-                    game.checkGameBoard(at: index)
+                    game.startGame(at: index)
                     print(game.gameBoard)
                     
                 }
@@ -126,7 +135,7 @@ class GameViewController: UIViewController {
                     squares.image = playerTwoCircle.image
                     squares.tintColor = playerTwoCircle.tintColor
                     
-                    game.checkGameBoard(at: index)
+                    game.startGame(at: index)
                     print(game.gameBoard)
                     
                     
