@@ -28,7 +28,9 @@ class GameViewController: UIViewController {
     var initialOPosition: CGPoint = CGPoint.zero
     
     //To check which square is which in the gameBoard
-    var gameBoard = [0,1,2,3,4,5,6,7,8]
+    var gameBoard = [0,0,0,0,0,0,0,0,0]
+    
+    var currentPlayerPlaying = true
     
 
     override func viewDidLoad() {
@@ -37,6 +39,8 @@ class GameViewController: UIViewController {
         
         initialXPosition = playerOneCross.center
         initialOPosition = playerTwoCircle.center
+        
+        
         
         /*
         for (index, square) in boardSquares.enumerated() {
@@ -61,24 +65,29 @@ class GameViewController: UIViewController {
         
         if sender.state == .ended {
             
+            
             //To check frames in the UIImageView outlet collections
-            for squares in boardSquares {
-                let frame = squares.frame
-                print("Frame of imageView: \(frame)")
-                print("Frame of playerOneCross: \(playerOneCross.frame)")
+            for (index, squares) in boardSquares.enumerated() {
+                //let frame = squares.frame
+                //print("Frame of imageView: \(frame)")
+                //print("Frame of playerOneCross: \(playerOneCross.frame)")
                 
                 
                 let squareFrameInSuperview = squares.convert(squares.bounds, to: self.view)
                 let crossFrameInSuperview = playerOneCross.convert(playerOneCross.bounds, to: self.view)
                             
-                print("Frame of imageView: \(squareFrameInSuperview)")
-                print("Frame of playerOneCross: \(crossFrameInSuperview)")
+                //print("Frame of imageView: \(squareFrameInSuperview)")
+                //print("Frame of playerOneCross: \(crossFrameInSuperview)")
                             
                 // Check if playerOneCross frame is within the frame of squares
                 if squareFrameInSuperview.contains(crossFrameInSuperview) {
                     
-                    let replaceWithX = squares.image
+                    
                     squares.image = playerOneCross.image
+                    squares.tintColor = playerOneCross.tintColor
+                    
+                    checkGameBoard(at: index)
+                    print(gameBoard)
                     
                 }
                 
@@ -102,23 +111,27 @@ class GameViewController: UIViewController {
         if sender.state == .ended {
             
             //To check frames in the UIImageView outlet collections
-            for squares in boardSquares {
-                let frame = squares.frame
-                print("Frame of imageView: \(frame)")
-                print("Frame of playerOneCross: \(playerTwoCircle.frame)")
+            for (index, squares) in boardSquares.enumerated() {
+                //let frame = squares.frame
+                //print("Frame of imageView: \(frame)")
+                //print("Frame of playerOneCross: \(playerTwoCircle.frame)")
                 
                 
                 let squareFrameInSuperview = squares.convert(squares.bounds, to: self.view)
                 let circleFrameInSuperview = playerTwoCircle.convert(playerTwoCircle.bounds, to: self.view)
                             
-                print("Frame of imageView: \(squareFrameInSuperview)")
-                print("Frame of playerOneCross: \(circleFrameInSuperview)")
+                //print("Frame of imageView: \(squareFrameInSuperview)")
+                //print("Frame of playerOneCross: \(circleFrameInSuperview)")
                             
                 // Check if playerTwoCircle frame is within the frame of squares
                 if squareFrameInSuperview.contains(circleFrameInSuperview) {
                     
-                    let replaceWithX = squares.image
                     squares.image = playerTwoCircle.image
+                    squares.tintColor = playerTwoCircle.tintColor
+                    
+                    checkGameBoard(at: index)
+                    print(gameBoard)
+                    
                     
                 }
                 
@@ -129,6 +142,22 @@ class GameViewController: UIViewController {
         
         
     }
+    
+    func checkGameBoard(at index: Int) {
+        //Try to use tag and try to map through all the tags??
+        if gameBoard[index] == 0 {
+            if currentPlayerPlaying {
+                gameBoard[index] = PLAYER_ONE
+            } else {
+                gameBoard[index] = PLAYER_TWO
+            }
+            
+            currentPlayerPlaying.toggle()
+            
+        }
+        
+    }
+    
     
         
 }
