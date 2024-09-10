@@ -19,7 +19,7 @@ class GameViewController: UIViewController {
     @IBOutlet weak var playerTwoCircle: UIImageView!
     
     
-    //Initial the TicTacToe class
+    //Initial the business logic
     var game = TicTacToe()
     
     
@@ -51,9 +51,17 @@ class GameViewController: UIViewController {
 
     }
     
-    func resetGame() {
+    func resetGameBoard() {
         
-        
+        for square in boardSquares {
+            
+            if square.image == UIImage(systemName: "xmark"){
+                square.image = UIImage(systemName: "square")?.withTintColor(.black)
+                //playerTwoCircle.image = UIImage(systemName: "square")?.withTintColor(.black)
+            } else if square.image == UIImage(systemName: "circle"){
+                square.image = UIImage(systemName: "square")?.withTintColor(.black)
+            }
+        }
         
     }
     
@@ -68,10 +76,12 @@ class GameViewController: UIViewController {
     func gameOverAlertMessage(title: String, message: String) {
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Play Again", style: UIAlertAction.Style.default, handler: nil))
-        self.present(alert, animated: true, completion: nil)
         alert.addAction(UIAlertAction(title: "Main Menu", style: UIAlertAction.Style.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
+        alert.addAction(UIAlertAction(title: "Play Again", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+        resetGameBoard()
+        
     }
     
     //Drag function for X
@@ -107,6 +117,7 @@ class GameViewController: UIViewController {
                     
                     squares.image = playerOneCross.image
                     squares.tintColor = playerOneCross.tintColor
+                    
                     
                     game.startGame(at: index)
                     print(game.gameBoard)
