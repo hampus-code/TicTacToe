@@ -37,7 +37,9 @@ class GameViewController: UIViewController {
         initialXPosition = playerOneCross.center
         initialOPosition = playerTwoCircle.center
         
-        
+        game.onGameEnd = { [weak self] winner in
+                    self?.gameOverAlertMessage(title: "Game Over", message: "\(winner) wins!")
+                }
         
         /*
         for (index, square) in boardSquares.enumerated() {
@@ -49,12 +51,26 @@ class GameViewController: UIViewController {
 
     }
     
+    func resetGame() {
+        
+        
+        
+    }
+    
+    //for alert
+    func gameModeState() {
+        
+        
+    }
     
     
-    func gameFinishedAlertMessage(title: String, message: String) {
+    //Alert message
+    func gameOverAlertMessage(title: String, message: String) {
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Click", style: UIAlertAction.Style.default, handler: nil))
+        alert.addAction(UIAlertAction(title: "Play Again", style: UIAlertAction.Style.default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+        alert.addAction(UIAlertAction(title: "Main Menu", style: UIAlertAction.Style.default, handler: nil))
         self.present(alert, animated: true, completion: nil)
     }
     
@@ -94,6 +110,8 @@ class GameViewController: UIViewController {
                     
                     game.startGame(at: index)
                     print(game.gameBoard)
+                    
+                    
                     
                 }
                 
@@ -137,6 +155,7 @@ class GameViewController: UIViewController {
                     
                     game.startGame(at: index)
                     print(game.gameBoard)
+                    
                     
                     
                 }

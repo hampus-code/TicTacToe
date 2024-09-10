@@ -9,7 +9,9 @@ import Foundation
 
 class TicTacToe {
     
-    //To check which player's turn it is
+    //Closure
+    var onGameEnd: ((String) -> Void)?
+    
     let PLAYER_ONE = 1
     let PLAYER_TWO = 2
     
@@ -18,7 +20,7 @@ class TicTacToe {
     var currentPlayerPlaying = true
     
     func startGame(at index: Int) {
-        //Try to use tag and try to map through all the tags??
+        
         if gameBoard[index] == 0 {
             if currentPlayerPlaying {
                 gameBoard[index] = PLAYER_ONE
@@ -28,96 +30,78 @@ class TicTacToe {
             
             currentPlayerPlaying.toggle()
             
+        }
+        
+        if let winner = checkForWinner(at: index) {
+                        onGameEnd?(winner)
+                        resetGameBoardArray()
+                    }
+        
+    }
+    
+    //Checks all my functions that checks the rows and columns and show if there is a winner or tie
+    func checkForWinner(at index: Int) -> String? {
+            if checkWinnerHorizontally(at: index) || checkWinnerVertically(at: index) || checkWinnerDiagonally(at: index) {
+                return currentPlayerPlaying ? "Player 2" : "Player 1"
+            } else if !gameBoard.contains(0) {
+                
+                return "Its a tie"
             
+            }
+            return nil
         }
-        checkWinnerHorizontally(at: index)
-        checkWinnerVertically(at: index)
-        checkWinnerDiagonally(at: index)
-        
-    }
     
-    func checkWinnerHorizontally(at index: Int) {
-        
-        switch index {
-        case 0,1,2:
-            if gameBoard[0] == PLAYER_ONE && gameBoard[1] == PLAYER_ONE && gameBoard[2] == PLAYER_ONE {
-                print("Player 1 wins horizontally at row 1")
-            } else if gameBoard[0] == PLAYER_TWO && gameBoard[1] == PLAYER_TWO && gameBoard[2] == PLAYER_TWO {
-                print("Player 2 wins at horizontally row 1")
-            }
-        case 3,4,5:
-            if gameBoard[3] == PLAYER_ONE && gameBoard[4] == PLAYER_ONE && gameBoard[5] == PLAYER_ONE {
-                print("Player 1 wins at horizontally row 2")
-            } else if gameBoard[3] == PLAYER_TWO && gameBoard[4] == PLAYER_TWO && gameBoard[5] == PLAYER_TWO {
-                print("Player 2 wins at horizontally row 2")
-            }
-        case 6,7,8:
-            if gameBoard[6] == PLAYER_ONE && gameBoard[7] == PLAYER_ONE && gameBoard[8] == PLAYER_ONE {
-                print("Player 1 wins at horizontally row 3")
-            } else if gameBoard[6] == PLAYER_TWO && gameBoard[7] == PLAYER_TWO && gameBoard[8] == PLAYER_TWO {
-                print("Player 2 wins at horizontally row 3")
-            }
-        default:
-            if !gameBoard.contains(0) {
-                print("No winner here, it's a tie!")
-            }
-        }
-        
-        
-    }
     
-    func checkWinnerVertically(at index: Int) {
-        
-        switch index {
-        case 0,3,6:
-            if gameBoard[0] == PLAYER_ONE && gameBoard[3] == PLAYER_ONE && gameBoard[6] == PLAYER_ONE {
-                print("Player 1 wins vertically at row 1")
-            } else if gameBoard[0] == PLAYER_TWO && gameBoard[3] == PLAYER_TWO && gameBoard[6] == PLAYER_TWO {
-                print("Player 2 wins at horizontally row 1")
-            }
-        case 1,4,7:
-            if gameBoard[1] == PLAYER_ONE && gameBoard[4] == PLAYER_ONE && gameBoard[7] == PLAYER_ONE {
-                print("Player 1 wins at vertically row 2")
-            } else if gameBoard[1] == PLAYER_TWO && gameBoard[4] == PLAYER_TWO && gameBoard[7] == PLAYER_TWO {
-                print("Player 2 wins at vertically row 2")
-            }
-        case 2,5,8:
-            if gameBoard[2] == PLAYER_ONE && gameBoard[5] == PLAYER_ONE && gameBoard[8] == PLAYER_ONE {
-                print("Player 1 wins at vertically row 3")
-            } else if gameBoard[2] == PLAYER_TWO && gameBoard[5] == PLAYER_TWO && gameBoard[8] == PLAYER_TWO {
-                print("Player 2 wins at vertically row 3")
-            }
-        default:
-            if !gameBoard.contains(0) {
-                print("No winner here, it's a tie!")
-            }
-        }
-        
-    }
     
-    func checkWinnerDiagonally(at index: Int) {
-        
-        switch index {
-        case 0,4,8:
-            if gameBoard[0] == PLAYER_ONE && gameBoard[4] == PLAYER_ONE && gameBoard[8] == PLAYER_ONE {
-                print("Player 1 wins diagonally at the left")
-            } else if gameBoard[0] == PLAYER_TWO && gameBoard[4] == PLAYER_TWO && gameBoard[8] == PLAYER_TWO {
-                print("Player 2 wins at diagonally at the left")
-            }
-        case 2,4,6:
-            if gameBoard[2] == PLAYER_ONE && gameBoard[4] == PLAYER_ONE && gameBoard[6] == PLAYER_ONE {
-                print("Player 1 wins at diagonally at the right")
-            } else if gameBoard[2] == PLAYER_TWO && gameBoard[4] == PLAYER_TWO && gameBoard[6] == PLAYER_TWO {
-                print("Player 2 wins at diagonally at the right")
-            }
-        default:
-            if !gameBoard.contains(0) {
-                print("No winner here, it's a tie!")
+    //Checks winner Horizontally
+    func checkWinnerHorizontally(at index: Int) -> Bool {
+            switch index {
+            case 0, 1, 2:
+                //Checks if every index contains the same thing, for example index 0,1,2 contains 1 or 2
+                return gameBoard[0] == gameBoard[1] && gameBoard[1] == gameBoard[2] && gameBoard[0] != 0
+            case 3, 4, 5:
+                return gameBoard[3] == gameBoard[4] && gameBoard[4] == gameBoard[5] && gameBoard[3] != 0
+            case 6, 7, 8:
+                return gameBoard[6] == gameBoard[7] && gameBoard[7] == gameBoard[8] && gameBoard[6] != 0
+            default:
+                return false
             }
         }
+    
+    //Checks winner Vertically
+    func checkWinnerVertically(at index: Int) -> Bool {
+            switch index {
+            case 0, 3, 6:
+                //Checks if every index contains the same thing
+                return gameBoard[0] == gameBoard[3] && gameBoard[3] == gameBoard[6] && gameBoard[0] != 0
+            case 1, 4, 7:
+                return gameBoard[1] == gameBoard[4] && gameBoard[4] == gameBoard[7] && gameBoard[1] != 0
+            case 2, 5, 8:
+                return gameBoard[2] == gameBoard[5] && gameBoard[5] == gameBoard[8] && gameBoard[2] != 0
+            default:
+                return false
+            }
+        }
+    
+    //Checks winner Diagonally
+    func checkWinnerDiagonally(at index: Int) -> Bool {
+            switch index {
+            case 0, 4, 8:
+                //Checks if every index contains the same thing
+                return gameBoard[0] == gameBoard[4] && gameBoard[4] == gameBoard[8] && gameBoard[0] != 0
+            case 2, 4, 6:
+                return gameBoard[2] == gameBoard[4] && gameBoard[4] == gameBoard[6] && gameBoard[2] != 0
+            default:
+                return false
+            }
+        }
+    
+    //Resets gameBoard array
+    func resetGameBoardArray() {
         
-        
+        gameBoard = [0,0,0,0,0,0,0,0,0]
     }
     
     
 }
+
