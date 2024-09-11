@@ -40,8 +40,11 @@ class GameViewController: UIViewController {
         
         //When the game is over a alert message is shown
         game.onGameEnd = { [weak self] winner in
-                    self?.gameOverAlertMessage(title: "Game Over", message: "\(winner) wins!")
-            
+            if winner == "It's a tie" {
+                self?.gameOverAlertMessage(title: "Game Over", message: "It's a tie")
+            } else {
+                self?.gameOverAlertMessage(title: "Game Over", message: "\(winner) wins!")
+            }
             
             //To update the score (i have put in the code her temporarly
             if winner == "Player 1" {
@@ -72,7 +75,10 @@ class GameViewController: UIViewController {
             }
         }
         
+        game.currentPlayerPlaying = true
+        
     }
+    
     
     //for alert
     func gameModeState() {

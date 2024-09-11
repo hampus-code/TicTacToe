@@ -39,13 +39,15 @@ class TicTacToe {
         
     }
     
+    
+    
     //Checks all my functions that checks the rows and columns and show if there is a winner or tie
     func checkForWinner(at index: Int) -> String? {
             if checkWinnerHorizontally(at: index) || checkWinnerVertically(at: index) || checkWinnerDiagonally(at: index) {
                 return currentPlayerPlaying ? "Player 2" : "Player 1"
             } else if !gameBoard.contains(0) {
                 
-                return "Its a tie"
+                return "It's a tie"
             
             }
             return nil
