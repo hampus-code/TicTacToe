@@ -16,6 +16,7 @@
 		0D10F62D2C870B7A007C71B5 /* TicTacToe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D10F62C2C870B7A007C71B5 /* TicTacToe.swift */; };
 		0D3933732C922BE0002F2E25 /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3933722C922BE0002F2E25 /* MainMenuViewController.swift */; };
 		0D5CAB2D2C87190900E6F161 /* TicTacToePlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D5CAB2C2C87190900E6F161 /* TicTacToePlayer.swift */; };
+		0DA8EB062C92FFFB000DD661 /* EnterPlayerNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0DA8EB052C92FFFB000DD661 /* EnterPlayerNameViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		0D10F62C2C870B7A007C71B5 /* TicTacToe.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicTacToe.swift; sourceTree = "<group>"; };
 		0D3933722C922BE0002F2E25 /* MainMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
 		0D5CAB2C2C87190900E6F161 /* TicTacToePlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicTacToePlayer.swift; sourceTree = "<group>"; };
+		0DA8EB052C92FFFB000DD661 /* EnterPlayerNameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterPlayerNameViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 			children = (
 				0D0DC9EC2C87047F009B935E /* GameViewController.swift */,
 				0D3933722C922BE0002F2E25 /* MainMenuViewController.swift */,
+				0DA8EB052C92FFFB000DD661 /* EnterPlayerNameViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -174,6 +177,7 @@
 				0D3933732C922BE0002F2E25 /* MainMenuViewController.swift in Sources */,
 				0D5CAB2D2C87190900E6F161 /* TicTacToePlayer.swift in Sources */,
 				0D0DC9ED2C87047F009B935E /* GameViewController.swift in Sources */,
+				0DA8EB062C92FFFB000DD661 /* EnterPlayerNameViewController.swift in Sources */,
 				0D0DC9E92C87047F009B935E /* AppDelegate.swift in Sources */,
 				0D10F62D2C870B7A007C71B5 /* TicTacToe.swift in Sources */,
 				0D0DC9EB2C87047F009B935E /* SceneDelegate.swift in Sources */,

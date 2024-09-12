@@ -9,16 +9,13 @@ import UIKit
 
 class MainMenuViewController: UIViewController {
     
-    @IBOutlet weak var playGameBtn: UIButton!
-    @IBOutlet weak var playComputerBtn: UIButton!
-    @IBOutlet weak var aboutGameBtn: UIButton!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
     
+    /*
     func setupGradient() {
             let gradientLayer = CAGradientLayer()
             gradientLayer.frame = playGameBtn.bounds
@@ -36,7 +33,7 @@ class MainMenuViewController: UIViewController {
             
             gradientLayer.add(animation, forKey: "gradientAnimation")
         }
-    
+        */
 
     /*
     // MARK: - Navigation
@@ -47,5 +44,16 @@ class MainMenuViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    @IBAction func playGameBtn(_ sender: UIButton) {
+    }
+    
+    
+    @IBAction func playComputerBtn(_ sender: UIButton) {
+    }
+    
+    @IBAction func aboutGameBtn(_ sender: UIButton) {
+    }
+    
 
 }

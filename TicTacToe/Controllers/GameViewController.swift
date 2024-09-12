@@ -24,6 +24,8 @@ class GameViewController: UIViewController {
     var game = TicTacToe()
     
     
+    let segueToMainMenu = "segueToMainMenu"
+    
     //The inital position for the X and the O
     var initialXPosition: CGPoint = CGPoint.zero
     var initialOPosition: CGPoint = CGPoint.zero
@@ -107,7 +109,9 @@ class GameViewController: UIViewController {
     func gameOverAlertMessage(title: String, message: String) {
         
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Main Menu", style: UIAlertAction.Style.default, handler: nil))
+        alert.addAction(UIAlertAction(title: "Main Menu", style: UIAlertAction.Style.default, handler: { action in
+            self.performSegue(withIdentifier: self.segueToMainMenu, sender: self)
+        }))
         
         //Resets the gameBoard when "Play Again" is clicked
         alert.addAction(UIAlertAction(title: "Play Again", style: UIAlertAction.Style.default, handler: { action in
