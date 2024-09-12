@@ -38,6 +38,7 @@ class GameViewController: UIViewController {
         initialXPosition = playerOneCross.center
         initialOPosition = playerTwoCircle.center
         
+        
         //When the game is over a alert message is shown
         game.onGameEnd = { [weak self] winner in
             if winner == "It's a tie" {
@@ -56,9 +57,23 @@ class GameViewController: UIViewController {
             }
             
                 }
-
+            showPlayerTurn()
         
-
+    }
+    
+    func showPlayerTurn() {
+        
+        
+        if game.currentPlayerPlaying {
+            playerTwoCircle.tintColor = .clear
+            playerOneCross.tintColor = .blue
+        } else if !game.currentPlayerPlaying {
+            playerOneCross.tintColor = .clear
+            playerTwoCircle.tintColor = .red
+            
+        }
+         
+        
     }
     
     func resetGameBoard() {
@@ -76,6 +91,7 @@ class GameViewController: UIViewController {
         }
         
         game.currentPlayerPlaying = true
+        showPlayerTurn()
         
     }
     
@@ -136,12 +152,14 @@ class GameViewController: UIViewController {
                     squares.image = playerOneCross.image
                     squares.tintColor = playerOneCross.tintColor
                     
+                    //playerTwoCircle.tintColor = .clear
                     
                     game.startGame(at: index)
+                    showPlayerTurn()
                     print(game.gameBoard)
                     
                     
-                    
+
                 }
                 
             }
@@ -183,6 +201,7 @@ class GameViewController: UIViewController {
                     squares.tintColor = playerTwoCircle.tintColor
                     
                     game.startGame(at: index)
+                    showPlayerTurn()
                     print(game.gameBoard)
                     
                     

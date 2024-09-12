@@ -8,6 +8,71 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Main Menu View Controller-->
+        <scene sceneID="hK9-4j-zjU">
+            <objects>
+                <viewController id="pRm-Wx-LaX" customClass="MainMenuViewController" customModule="TicTacToe" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="fQG-nN-1sb">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="5qC-gT-OBb">
+                                <rect key="frame" x="128.33333333333331" y="324.66666666666669" width="136.33333333333331" height="203.00000000000006"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="50" translatesAutoresizingMaskIntoConstraints="NO" id="CV7-Mm-Akz">
+                                        <rect key="frame" x="0.0" y="0.0" width="136.33333333333334" height="203"/>
+                                        <subviews>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VPo-bx-CHU">
+                                                <rect key="frame" x="0.0" y="0.0" width="136.33333333333334" height="34.333333333333336"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="filled" title="Play Game"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d1X-O0-6eh">
+                                                <rect key="frame" x="0.0" y="84.333333333333314" width="136.33333333333334" height="34.333333333333343"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="filled" title="Play Computer"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bma-a8-idh">
+                                                <rect key="frame" x="0.0" y="168.66666666666663" width="136.33333333333334" height="34.333333333333343"/>
+                                                <state key="normal" title="Button"/>
+                                                <buttonConfiguration key="configuration" style="filled" title="About Game"/>
+                                            </button>
+                                        </subviews>
+                                    </stackView>
+                                </subviews>
+                            </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6sf-yk-bUs">
+                                <rect key="frame" x="133" y="109" width="127.33333333333331" height="30"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tic Tac Toe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Myb-wZ-pEN">
+                                        <rect key="frame" x="0.0" y="0.0" width="127.33333333333333" height="30"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="ckf-1r-va3"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="6sf-yk-bUs" firstAttribute="leading" secondItem="ckf-1r-va3" secondAttribute="leading" constant="133" id="IuO-V8-6Oc"/>
+                            <constraint firstItem="6sf-yk-bUs" firstAttribute="top" secondItem="ckf-1r-va3" secondAttribute="top" constant="50" id="Yex-bP-wVO"/>
+                            <constraint firstItem="5qC-gT-OBb" firstAttribute="centerX" secondItem="fQG-nN-1sb" secondAttribute="centerX" id="bgb-nP-Hin"/>
+                            <constraint firstItem="5qC-gT-OBb" firstAttribute="centerY" secondItem="fQG-nN-1sb" secondAttribute="centerY" id="tsT-cB-rq7"/>
+                            <constraint firstItem="ckf-1r-va3" firstAttribute="trailing" secondItem="6sf-yk-bUs" secondAttribute="trailing" constant="132.66999999999999" id="zW7-B8-uRt"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="aboutGameBtn" destination="bma-a8-idh" id="nSA-IB-9Je"/>
+                        <outlet property="playComputerBtn" destination="d1X-O0-6eh" id="KqF-lL-gK0"/>
+                        <outlet property="playGameButton" destination="VPo-bx-CHU" id="pfR-cJ-wW2"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eHc-7W-cx7" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-582" y="-1"/>
+        </scene>
         <!--Game View Controller-->
         <scene sceneID="6LD-mn-ubK">
             <objects>
