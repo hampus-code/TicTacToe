@@ -9,9 +9,9 @@ import Foundation
 
 struct Player {
     
-    var id: Int
+    //var id: Int
     var username: String
-    var score: Int
+    var score: Int = 0
     
     
 }

@@ -8,6 +8,14 @@
 import UIKit
 
 class EnterPlayerNameViewController: UIViewController {
+    
+    //Outlets
+    @IBOutlet weak var playerOneTxtField: UITextField!
+    @IBOutlet weak var playerTwoTxtField: UITextField!
+    
+    var player: TicTacToe?
+    
+    var segueToGame = "segueToGame"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,5 +33,26 @@ class EnterPlayerNameViewController: UIViewController {
         // Pass the selected object to the new view controller.
     }
     */
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == segueToGame {
+                
+            guard let destinationVC = segue.destination as? GameViewController,
+                  let playerOneName = playerOneTxtField.text,
+                    let playerTwoName = playerTwoTxtField.text else {
+                return
+            }
+            
+            let playerOne = Player(username: playerOneName)
+            let playerTwo = Player(username: playerTwoName)
+            
+            destinationVC.playerOneName = playerOneName
+            destinationVC.playerTwoName = playerTwoName
+                    
+        }
+    }
+    
 
 }

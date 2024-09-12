@@ -13,6 +13,9 @@ class GameViewController: UIViewController {
     
     @IBOutlet var boardSquares: [UIImageView]!
     
+    @IBOutlet weak var playerOneLabel: UILabel!
+    @IBOutlet weak var playerTwoLabel: UILabel!
+    
     @IBOutlet weak var scorePlayerOne: UILabel!
     @IBOutlet weak var scorePlayerTwo: UILabel!
     
@@ -23,8 +26,10 @@ class GameViewController: UIViewController {
     //Initial the business logic
     var game = TicTacToe()
     
-    
     let segueToMainMenu = "segueToMainMenu"
+    
+    var playerOneName: String?
+    var playerTwoName: String?
     
     //The inital position for the X and the O
     var initialXPosition: CGPoint = CGPoint.zero
@@ -39,6 +44,9 @@ class GameViewController: UIViewController {
         
         initialXPosition = playerOneCross.center
         initialOPosition = playerTwoCircle.center
+        
+        playerOneLabel.text = playerOneName ?? "Player 1"
+        playerTwoLabel.text = playerTwoName ?? "Player 2"
         
         
         //When the game is over a alert message is shown
@@ -68,10 +76,10 @@ class GameViewController: UIViewController {
         
         if game.currentPlayerPlaying {
             playerTwoCircle.tintColor = .clear
-            playerOneCross.tintColor = .blue
+            playerOneCross.tintColor = .systemBlue
         } else if !game.currentPlayerPlaying {
             playerOneCross.tintColor = .clear
-            playerTwoCircle.tintColor = .red
+            playerTwoCircle.tintColor = .systemRed
             
         }
          

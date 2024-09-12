@@ -257,7 +257,9 @@
                     <navigationItem key="navigationItem" id="eYA-bU-aLr"/>
                     <connections>
                         <outlet property="playerOneCross" destination="0eg-nv-JOz" id="sWy-P8-3jS"/>
+                        <outlet property="playerOneLabel" destination="iqi-QO-NGa" id="1XW-tJ-c8x"/>
                         <outlet property="playerTwoCircle" destination="CW7-e5-nQq" id="Qvy-sS-LEy"/>
+                        <outlet property="playerTwoLabel" destination="3Gm-DL-3MD" id="s6U-ow-k1G"/>
                         <outlet property="scorePlayerOne" destination="e8a-mv-twx" id="8J8-bQ-hgB"/>
                         <outlet property="scorePlayerTwo" destination="7kp-lL-sdf" id="5ql-bj-LFl"/>
                         <outletCollection property="boardSquares" destination="G3u-gY-T6Y" collectionClass="NSMutableArray" id="8qV-R7-Kjc"/>
@@ -294,17 +296,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="53Q-ek-tUa">
-                                <rect key="frame" x="133" y="50" width="127.33333333333331" height="30"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tic Tac Toe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jZJ-4i-0VK">
-                                        <rect key="frame" x="0.0" y="0.0" width="127.33333333333333" height="30"/>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                            </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="1x1-9D-BPL" userLabel="parentStack">
                                 <rect key="frame" x="71.666666666666686" y="341.66666666666669" width="250" height="168.66666666666669"/>
                                 <subviews>
@@ -355,6 +346,17 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="53Q-ek-tUa">
+                                <rect key="frame" x="133" y="50" width="127.33333333333331" height="30"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tic Tac Toe" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jZJ-4i-0VK">
+                                        <rect key="frame" x="0.0" y="0.0" width="127.33333333333333" height="30"/>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="25"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tL4-pC-Dg0">
                                 <rect key="frame" x="141" y="560.33333333333337" width="111" height="34.333333333333371"/>
                                 <subviews>
@@ -383,6 +385,10 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="RUv-4t-Jbv"/>
+                    <connections>
+                        <outlet property="playerOneTxtField" destination="X3l-E1-gfJ" id="94s-NB-aNf"/>
+                        <outlet property="playerTwoTxtField" destination="Ipy-9L-nZ2" id="0KZ-Cz-V51"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ivJ-RC-8MN" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

@@ -9,6 +9,8 @@ import Foundation
 
 class TicTacToe {
     
+    var players: [Player] = []
+    
     //Closure
     var onGameEnd: ((String) -> Void)?
     
@@ -18,6 +20,11 @@ class TicTacToe {
     var gameBoard = [0,0,0,0,0,0,0,0,0]
     
     var currentPlayerPlaying = true
+    
+    func addPlayers(player: Player) {
+        
+        players.append(player)
+    }
     
     func startGame(at index: Int) {
         
