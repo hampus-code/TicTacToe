@@ -47,6 +47,7 @@ class EnterPlayerNameViewController: UIViewController {
             
             let playerOne = Player(username: playerOneName)
             let playerTwo = Player(username: playerTwoName)
+            print(playerOne, playerTwo)
             
             destinationVC.playerOneName = playerOneName
             destinationVC.playerTwoName = playerTwoName

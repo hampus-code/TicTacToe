@@ -23,7 +23,7 @@ class GameViewController: UIViewController {
     @IBOutlet weak var playerTwoCircle: UIImageView!
     
     
-    //Initial the business logic
+    //Initializing the business logic
     var game = TicTacToe()
     
     let segueToMainMenu = "segueToMainMenu"
@@ -49,7 +49,7 @@ class GameViewController: UIViewController {
         playerTwoLabel.text = playerTwoName ?? "Player 2"
         
         
-        //When the game is over a alert message is shown
+        //When the game is over an alert message is shown
         game.onGameEnd = { [weak self] winner in
             if winner == "It's a tie" {
                 self?.gameOverAlertMessage(title: "Game Over", message: "It's a tie")
@@ -132,62 +132,22 @@ class GameViewController: UIViewController {
     
     //Drag function for X
     @IBAction func onDragX(_ sender: UIPanGestureRecognizer) {
-        
-        
-        let translation = sender.translation(in: self.view)
-        
-        playerOneCross.center = CGPoint(x: translation.x + playerOneCross.center.x, y: translation.y + playerOneCross.center.y)
-        
-        sender.setTranslation(CGPoint.zero, in: self.view)
-        
-        
-        if sender.state == .ended {
-            
-            
-            //To check frames in the UIImageView outlet collections
-            for (index, squares) in boardSquares.enumerated() {
-                //let frame = squares.frame
-                //print("Frame of imageView: \(frame)")
-                //print("Frame of playerOneCross: \(playerOneCross.frame)")
-                
-                
-                let squareFrameInSuperview = squares.convert(squares.bounds, to: self.view)
-                let crossFrameInSuperview = playerOneCross.convert(playerOneCross.bounds, to: self.view)
-                            
-                //print("Frame of imageView: \(squareFrameInSuperview)")
-                //print("Frame of playerOneCross: \(crossFrameInSuperview)")
-                            
-                // Check if playerOneCross frame is within the frame of squares
-                if squareFrameInSuperview.contains(crossFrameInSuperview) && game.currentPlayerPlaying && squares.image != playerTwoCircle.image {
-                    
-                    
-                    squares.image = playerOneCross.image
-                    squares.tintColor = playerOneCross.tintColor
-                    
-                    //playerTwoCircle.tintColor = .clear
-                    
-                    game.startGame(at: index)
-                    showPlayerTurn()
-                    print(game.gameBoard)
-                    
-                    
-
-                }
-                
-            }
-            
-            playerOneCross.center = initialXPosition
-        }
-        
+        onDragSymbols(sender, symbol: playerOneCross, systemName: "xmark", originalPosition: initialXPosition, opponentSymbolImage: playerTwoCircle.image, currentPlayer: true)
         
     }
     
     //Drag function for O
     @IBAction func onDragO(_ sender: UIPanGestureRecognizer) {
+        onDragSymbols(sender, symbol: playerTwoCircle, systemName: "circle", originalPosition: initialOPosition, opponentSymbolImage: playerOneCross.image, currentPlayer: false)
+        
+    }
+    
+    //Genral onDragFunction for both symbols
+    func onDragSymbols(_ sender: UIPanGestureRecognizer, symbol: UIImageView, systemName: String, originalPosition: CGPoint, opponentSymbolImage: UIImage?, currentPlayer: Bool) {
         
         let translation = sender.translation(in: self.view)
         
-        playerTwoCircle.center = CGPoint(x: translation.x + playerTwoCircle.center.x, y: translation.y + playerTwoCircle.center.y)
+        symbol.center = CGPoint(x: translation.x + symbol.center.x, y: translation.y + symbol.center.y)
         
         sender.setTranslation(CGPoint.zero, in: self.view)
         
@@ -195,40 +155,30 @@ class GameViewController: UIViewController {
             
             //To check frames in the UIImageView outlet collections
             for (index, squares) in boardSquares.enumerated() {
-                //let frame = squares.frame
-                //print("Frame of imageView: \(frame)")
-                //print("Frame of playerOneCross: \(playerTwoCircle.frame)")
-                
-                
-                let squareFrameInSuperview = squares.convert(squares.bounds, to: self.view)
-                let circleFrameInSuperview = playerTwoCircle.convert(playerTwoCircle.bounds, to: self.view)
-                            
-                //print("Frame of imageView: \(squareFrameInSuperview)")
-                //print("Frame of playerOneCross: \(circleFrameInSuperview)")
-                            
-                // Check if playerTwoCircle frame is within the frame of squares
-                if squareFrameInSuperview.contains(circleFrameInSuperview) && !game.currentPlayerPlaying && squares.image != playerOneCross.image {
+
+        
+                    let squaresFrameInSuperview = squares.convert(squares.bounds, to: self.view)
+                    let symbolFrameInSuperview = symbol.convert(symbol.bounds, to: self.view)
+
                     
-                    squares.image = playerTwoCircle.image
-                    squares.tintColor = playerTwoCircle.tintColor
-                    
-                    game.startGame(at: index)
-                    showPlayerTurn()
-                    print(game.gameBoard)
-                    
-                    
-                    
+                    // Check if the symbols frame is within the frame of the squares
+                if squaresFrameInSuperview.contains(symbolFrameInSuperview) && squares.image != opponentSymbolImage &&  game.currentPlayerPlaying == currentPlayer {
+                        squares.image = UIImage(systemName: systemName)
+                        squares.tintColor = (systemName == "xmark") ? UIColor.systemBlue : UIColor.systemRed
+                        
+                        game.startGame(at: index)
+                        showPlayerTurn()
+                        print(game.gameBoard)
+                        
+                        
+                        
+                    }
                 }
-                
-            }
             
-            playerTwoCircle.center = initialXPosition
+            symbol.center = initialXPosition
         }
         
-        
     }
-    
-    
     
         
 }
