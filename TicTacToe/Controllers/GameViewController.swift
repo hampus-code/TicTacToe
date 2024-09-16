@@ -9,7 +9,6 @@ import UIKit
 
 class GameViewController: UIViewController {
     
-    //Make play against computer in main menu?
     
     @IBOutlet var boardSquares: [UIImageView]!
     

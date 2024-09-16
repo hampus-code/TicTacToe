@@ -9,7 +9,6 @@ import UIKit
 
 class ComputerGameViewController: UIViewController {
     
-    //Make play against computer in main menu?
     
     @IBOutlet var boardSquares: [UIImageView]!
     
@@ -46,7 +45,7 @@ class ComputerGameViewController: UIViewController {
         initialOPosition = playerTwoCircle.center
         
         playerOneLabel.text = playerOneName ?? "Player 1"
-        playerTwoLabel.text = computerName ?? "Player 2"
+        playerTwoLabel.text = computerName ?? "Computer"
         
         
         //When the game is over an alert message is shown
@@ -57,7 +56,7 @@ class ComputerGameViewController: UIViewController {
                 self?.gameOverAlertMessage(title: "Game Over", message: "\(winner) wins!")
             }
             
-            //To update the score (i have put in the code her temporarly
+            //To update the score (i have put in the code here temporarly)
             if winner == "Player 1" {
                 self?.scorePlayerOneValue += 1
                 self?.scorePlayerOne.text = "Score: \(self?.scorePlayerOneValue ?? 0)"
@@ -71,15 +70,22 @@ class ComputerGameViewController: UIViewController {
         
     }
     
+    //Show which player turn it is
     func showPlayerTurn() {
         
         
         if game.currentPlayerPlaying {
             playerTwoCircle.tintColor = .clear
             playerOneCross.tintColor = .systemBlue
+            playerTwoLabel.isHidden = true
+            playerOneLabel.isHidden = false
         } else if !game.currentPlayerPlaying {
             playerOneCross.tintColor = .clear
             playerTwoCircle.tintColor = .systemRed
+            playerOneLabel.isHidden = true
+            playerTwoLabel.isHidden = false
+            
+
             
         }
          
@@ -133,13 +139,7 @@ class ComputerGameViewController: UIViewController {
     //Drag function for X
     @IBAction func onDragX(_ sender: UIPanGestureRecognizer) {
         onDragSymbols(sender, symbol: playerOneCross, systemName: "xmark", originalPosition: initialXPosition, opponentSymbolImage: playerTwoCircle.image, currentPlayer: true)
-        
-    }
-    
-    //Drag function for O
-    @IBAction func onDragO(_ sender: UIPanGestureRecognizer) {
-        onDragSymbols(sender, symbol: playerTwoCircle, systemName: "circle", originalPosition: initialOPosition, opponentSymbolImage: playerOneCross.image, currentPlayer: false)
-        
+            
     }
     
     //Genral onDragFunction for both symbols
@@ -155,28 +155,51 @@ class ComputerGameViewController: UIViewController {
             
             //To check frames in the UIImageView outlet collections
             for (index, squares) in boardSquares.enumerated() {
-
-        
+                
                     let squaresFrameInSuperview = squares.convert(squares.bounds, to: self.view)
                     let symbolFrameInSuperview = symbol.convert(symbol.bounds, to: self.view)
-
+                    
                     
                     // Check if the symbols frame is within the frame of the squares
-                if squaresFrameInSuperview.contains(symbolFrameInSuperview) && squares.image != opponentSymbolImage &&  game.currentPlayerPlaying == currentPlayer {
+                    if squaresFrameInSuperview.contains(symbolFrameInSuperview) && squares.image != opponentSymbolImage &&  game.currentPlayerPlaying == currentPlayer {
                         squares.image = UIImage(systemName: systemName)
                         squares.tintColor = (systemName == "xmark") ? UIColor.systemBlue : UIColor.systemRed
                         
                         game.startGame(at: index)
                         showPlayerTurn()
+                        game.currentPlayerPlaying = false
+                        computerDrag()
                         print(game.gameBoard)
-                        
-                        
                         
                     }
                 }
             
             symbol.center = initialXPosition
         }
+        
+    }
+    
+    //
+    func computerDrag() {
+        
+        let emptySquares = boardSquares.filter { $0.image == UIImage(systemName: "square") }
+            
+            // Choose a random empty square
+            if let randomSquare = emptySquares.randomElement() {
+                // Simulate thinking time
+                DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { // 1 second delay
+                    // Update the chosen square with the computer's symbol
+                    randomSquare.image = self.playerTwoCircle.image
+                    randomSquare.tintColor = self.playerTwoCircle.tintColor
+                    
+                    // Update game state
+                    if let index = self.boardSquares.firstIndex(of: randomSquare) {
+                        self.game.startGame(at: index)
+                        self.showPlayerTurn()
+                        print(self.game.gameBoard)
+                    }
+                }
+            }
         
     }
     

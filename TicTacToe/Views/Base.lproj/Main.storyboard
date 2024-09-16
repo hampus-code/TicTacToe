@@ -555,9 +555,6 @@
                                             <constraint firstAttribute="height" constant="50" id="KNR-nn-Pbv"/>
                                             <constraint firstAttribute="width" constant="50" id="fxl-ev-92w"/>
                                         </constraints>
-                                        <connections>
-                                            <outletCollection property="gestureRecognizers" destination="asH-cQ-TWU" appends="YES" id="MMP-i1-jJp"/>
-                                        </connections>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Player 2" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ndI-zD-h9h">
                                         <rect key="frame" x="0.0" y="113.33333333333337" width="50" height="15.666666666666657"/>

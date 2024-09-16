@@ -51,7 +51,7 @@ class RegisterComputerViewController: UIViewController {
             }
             
             let playerOne = Player(username: playerOneName)
-            let computer = Player(username: computerName)
+            let computerPlayer = Player(username: computerName)
             
             print(playerOne, computerName)
             
