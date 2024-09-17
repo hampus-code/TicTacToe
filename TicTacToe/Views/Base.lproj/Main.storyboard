@@ -116,6 +116,9 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="wRe-2N-cl2"/>
+                                </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="w6e-6y-cft">
                                 <rect key="frame" x="171.66666666666666" y="698" width="50" height="129"/>
@@ -126,7 +129,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="CW7-e5-nQq" userLabel="playerTwoCircle">
+                                    <imageView clipsSubviews="YES" contentMode="scaleAspectFit" verticalHuggingPriority="251" image="circle" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="CW7-e5-nQq" userLabel="playerTwoCircle">
                                         <rect key="frame" x="0.0" y="39.333333333333371" width="50" height="48.666666666666671"/>
                                         <color key="tintColor" systemColor="systemRedColor"/>
                                         <gestureRecognizers/>
@@ -145,6 +148,9 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="Zxa-mi-XLz"/>
+                                </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="6Sj-vU-GHd">
                                 <rect key="frame" x="84" y="313.66666666666669" width="225" height="225.00000000000006"/>
@@ -537,6 +543,9 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="Aar-XI-I0A"/>
+                                </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="7M4-jf-ku8">
                                 <rect key="frame" x="171.66666666666666" y="698" width="50" height="129"/>
@@ -563,6 +572,9 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="pnK-BG-ULc"/>
+                                </constraints>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="7zl-dX-0XU">
                                 <rect key="frame" x="84" y="313.66666666666669" width="225" height="225.00000000000006"/>
