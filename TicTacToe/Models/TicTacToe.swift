@@ -21,6 +21,8 @@ class TicTacToe {
     
     var currentPlayerPlaying = true
     
+    var isGameAgasintComputer = false
+    
     func addPlayers(player: Player) {
         
         players.append(player)
@@ -52,7 +54,8 @@ class TicTacToe {
     func checkForWinner(at index: Int) -> String? {
             if checkWinnerHorizontally(at: index) || checkWinnerVertically(at: index) || checkWinnerDiagonally(at: index) {
                 return currentPlayerPlaying ? "Player 2" : "Player 1"
-            } else if !gameBoard.contains(0) {
+            
+            }else if !gameBoard.contains(0) {
                 
                 return "It's a tie"
             

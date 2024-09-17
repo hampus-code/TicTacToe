@@ -41,6 +41,8 @@ class ComputerGameViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        game.isGameAgasintComputer = true
+        
         initialXPosition = playerOneCross.center
         initialOPosition = playerTwoCircle.center
         
@@ -97,7 +99,7 @@ class ComputerGameViewController: UIViewController {
         for square in boardSquares {
             
             if square.image == UIImage(systemName: "xmark"){
-                square.image = UIImage(systemName: "square")?.withTintColor(.black)
+                square.image = UIImage(systemName: "square")
                 square.tintColor = .black
                 
             } else if square.image == UIImage(systemName: "circle"){
@@ -121,8 +123,15 @@ class ComputerGameViewController: UIViewController {
     
     //Alert message when someone have won the game or if it is a tie
     func gameOverAlertMessage(title: String, message: String) {
+        var finalMessage = message
+            
+            if game.isGameAgasintComputer {
+                if message == "Player 2 wins!" {
+                    finalMessage = "Computer wins"
+                }
+            }
         
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let alert = UIAlertController(title: title, message: finalMessage, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Main Menu", style: UIAlertAction.Style.default, handler: { action in
             self.performSegue(withIdentifier: self.segueComputerToMainMenu, sender: self)
         }))
@@ -179,8 +188,13 @@ class ComputerGameViewController: UIViewController {
         
     }
     
-    //
+    //The computers random drag
     func computerDrag() {
+        
+        //Checks which state the game is in
+        if game.checkForWinner(at: -1) != nil {
+                return // The game has ended, no need for the computer to play
+            }
         
         let emptySquares = boardSquares.filter { $0.image == UIImage(systemName: "square") }
             
@@ -197,6 +211,8 @@ class ComputerGameViewController: UIViewController {
                         self.game.startGame(at: index)
                         self.showPlayerTurn()
                         print(self.game.gameBoard)
+                        
+                        
                     }
                 }
             }
